@@ -1,0 +1,5 @@
+/node_modules
+/fontend/node_modules
+/.vscode 
+/fontend/.vscode
+/.env
