@@ -9,6 +9,7 @@ dotenv.config();
 connectDB();
 
 app.use(express.json()); //to accept json data
-app.use("/api/data", userRoutes);
+app.use("/", userRoutes);
+app.use("/", userRoutes);
 
 app.listen(5000, console.log("Server Started with 5000 port"));
