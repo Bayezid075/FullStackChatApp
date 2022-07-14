@@ -5,17 +5,19 @@ const loginFunc = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const login = await User.findOne({
     email,
-    password,
   });
 
-  if (login) {
-    res.status(200).json({
-      email: User.email,
-      password: User.password,
+  if (login && (await login.matchPassword(password))) {
+    res.json({
+      _id: login._id,
+      name: login.name,
+      email: login.email,
+      password: login.password,
+      pic: login.pic,
     });
   } else {
     res.status(404);
-    throw new Error("User Not found");
+    res.send("user Not found");
   }
 });
 
